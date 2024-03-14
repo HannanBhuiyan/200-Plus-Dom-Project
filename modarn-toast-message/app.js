@@ -30,9 +30,23 @@ function main() {
             elemDiv.remove()
         }
 
-        text.select()
-        navigator.clipboard.writeText(text.value)
-        createToastMessage(text.value)
+        if(isValidHexaCode(text.value)) {
+            text.select()
+            navigator.clipboard.writeText(text.value)
+            createToastMessage(text.value)
+        }
+        else {
+            alert("Invalid Color Code")
+        }
+ 
+    })
+
+    // check hexa code
+    text.addEventListener("keyup", function(e) {
+        color = e.target.value
+        if(color && isValidHexaCode(color)){
+            root.style.backgroundColor = e.target.value
+        }
     })
 
 }
@@ -70,3 +84,16 @@ function createToastMessage() {
 }
 
 
+/**
+ * @param {string} color 
+ */
+
+// Checking valid hexacode function
+function isValidHexaCode(color) {
+    let reg = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
+    return reg.test(color)
+}
+
+
+
+ 
