@@ -1,7 +1,8 @@
 const root = document.querySelector("#root")
 const text = document.querySelector("#text")
 const btnButton = document.querySelector("#btnButton")
-const copyBtn = document.querySelector("#copyBtn") 
+const copyBtn = document.querySelector("#copyBtn")
+const hashIcon = document.querySelector("#hashIcon")
  
 
 // global variable
@@ -18,44 +19,44 @@ function main() {
 
     // background event
     btnButton.addEventListener("click", function(){
-        let bgColor = randomHexColorCodeGenerator()
+        let bgColor = randomHexColorCodeGenerator() 
         root.style.backgroundColor = bgColor;
-        text.value = bgColor
+        text.value = bgColor.slice(1)
     })
 
     // copy event
     copyBtn.addEventListener("click", function() {
-
         if(elemDiv !== null) {
             elemDiv.remove()
         }
-
-        if(isValidHexaCode(text.value)) {
+        let color = hashIcon.textContent+text.value
+        if(isValidHexaCode(color)) {
             text.select()
-            navigator.clipboard.writeText(text.value)
-            createToastMessage(text.value)
+            navigator.clipboard.writeText(color)
+            createToastMessage(color)
         }
         else {
             alert("Invalid Color Code")
         }
- 
     })
 
     // check hexa code
     text.addEventListener("keyup", function(e) {
-        color = e.target.value
-        if(color && isValidHexaCode(color)){
-            root.style.backgroundColor = e.target.value
-        }
+        let color = e.target.value
+        if(color) {
+            text.value = color.toLowerCase()
+            if(isValidHexaCode(hashIcon.textContent+color)){
+                root.style.backgroundColor = hashIcon.textContent+color
+            }
+        } 
     })
-
 }
 
 // rendom hex color generator
 function randomHexColorCodeGenerator() {
     let hexaColor = (Math.random() * 0xfffff * 1000000).toString(16)
-    let color = "#"+hexaColor.slice(0, 6)
-    return color;
+    let color = hexaColor.slice(0, 6)
+    return hashIcon.textContent+color;
 }
 
 // create dynamic toast message
@@ -78,7 +79,7 @@ function createToastMessage() {
     
     })
 
-    span.innerText = `${text.value} Copyed Success`
+    span.innerText = `${hashIcon.textContent}${text.value} Copyed Success`
     elemDiv.appendChild(span)
     document.body.appendChild(elemDiv);
 }
@@ -93,7 +94,3 @@ function isValidHexaCode(color) {
     let reg = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
     return reg.test(color)
 }
-
-
-
- 

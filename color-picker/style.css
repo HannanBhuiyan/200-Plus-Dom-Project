@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.containerr {
+    background-color: #ddd;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.inner {
+    width: 400px;
+}
+
+.input_group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input_group input {
+    margin: 0;
+    padding: 12px 30px 12px 60px;
+    border: 2px solid;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 30px 7px rgba(194,194,194,1);
+    -moz-box-shadow: 0px 0px 30px 7px rgba(194, 194, 194, 1);
+    box-shadow: 0px 0px 30px 7px rgb(255 255 255);
+} 
+
+button#btnButton { 
+    background: #C936FF;
+    -webkit-box-shadow: -1px 15px 5px -2px rgba(201,54,255,0.78);
+    -moz-box-shadow: -1px 15px 5px -2px rgba(201,54,255,0.78);
+    box-shadow: 0px 8px 11px -2px rgba(201,54,255,0.78);
+    margin-right: 10px;
+    
+}
+button#copyBtn {
+    background: #671DCA;
+    margin-left: 10px;
+    -webkit-box-shadow: -1px 15px 5px -2px rgba(103,29,202,1);
+    -moz-box-shadow: -1px 15px 5px -2px rgba(103,29,202,1);
+    box-shadow:  0px 8px 11px -2px rgba(103,29,202,1);
+}
+button#copyBtn, button#btnButton {
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    font-size: 17px;
+    font-family: cursive;
+}
+
+.inner h1 {
+    font-size: 37px;
+    font-family: cursive;
+}
+
+.input-icon {
+    position: absolute;
+    left: 6px;
+    background: #ddd;
+    padding: 6px 13px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: cursive;
+}
+
+#text {
+    width: 100%;
+}
+
+.toast-message {
+    position: fixed;
+    z-index: 999;
+    right: 30px;
+    transition: all .3s ease-in-out;
+    color: #fff;
+    font-size: 20px;
+    padding: 11px 73px;
+    border-radius: 10px;
+    top: 20px;
+    -webkit-box-shadow: 10px 10px 34px 32px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 34px 32px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 34px 32px rgba(0,0,0,0.75);
+    cursor: pointer;
+    font-family: cursive;
+
+}
+
+.toast-message-side-in { 
+    animation-name: toastAminationIn;
+    animation-duration: .4s;
+}
+.toast-message-side-out { 
+    animation-name: toastAminationOut;
+    animation-duration: .3s;
+}
+
+@keyframes toastAminationIn {
+    from {
+        transform : translateX(200px);
+        opacity: 0
+    }
+    to {
+        transform : translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes toastAminationOut {
+    from {
+        transform : translateX(0px);
+        opacity: 1;
+    }
+    to {
+        transform : translateX(200px);
+        opacity: 0;
+    }
+}
